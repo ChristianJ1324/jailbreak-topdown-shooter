@@ -1,0 +1,9 @@
+CurrentLevel=0
+PlayerHealth=100
+PlayerX=64
+PlayerY=64
+CheckpointLevel=-1
+CheckpointX=64
+CheckpointY=64
+DashCharges=3
+BulletTimeMeter=1

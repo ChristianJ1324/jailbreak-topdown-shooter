@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{3a955698-4912-4da9-8f47-a0b3ee59c94b}</ProjectGuid>
+    <RootNamespace>Jailbreak</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)Build\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>Jailbreak</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib_win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;freetyped.lib;oggd.lib;vorbisd.lib;vorbisfiled.lib;vorbisencd.lib;FLACd.lib;winmm.lib;gdi32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist "$(OutDir)Assets" mkdir "$(OutDir)Assets"
+xcopy "$(ProjectDir)Assets\*" "$(OutDir)Assets\" /E /I /Y /Q
+if not exist "$(OutDir)Data" mkdir "$(OutDir)Data"
+xcopy "$(ProjectDir)Data\*" "$(OutDir)Data\" /E /I /Y /Q
+copy /Y "$(ProjectDir)README.txt" "$(OutDir)README.txt" &gt;nul</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib_win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;sfml-audio-s.lib;freetype.lib;ogg.lib;vorbis.lib;vorbisfile.lib;vorbisenc.lib;FLAC.lib;winmm.lib;gdi32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist "$(OutDir)Assets" mkdir "$(OutDir)Assets"
+xcopy "$(ProjectDir)Assets\*" "$(OutDir)Assets\" /E /I /Y /Q
+if not exist "$(OutDir)Data" mkdir "$(OutDir)Data"
+xcopy "$(ProjectDir)Data\*" "$(OutDir)Data\" /E /I /Y /Q
+copy /Y "$(ProjectDir)README.txt" "$(OutDir)README.txt" &gt;nul</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(ProjectDir)Runtime\x64\Debug\sfml-graphics-d-3.dll" "$(OutDir)sfml-graphics-d-3.dll" &gt;nul
+copy /Y "$(ProjectDir)Runtime\x64\Debug\sfml-window-d-3.dll" "$(OutDir)sfml-window-d-3.dll" &gt;nul
+copy /Y "$(ProjectDir)Runtime\x64\Debug\sfml-system-d-3.dll" "$(OutDir)sfml-system-d-3.dll" &gt;nul
+copy /Y "$(ProjectDir)Runtime\x64\Debug\sfml-audio-d-3.dll" "$(OutDir)sfml-audio-d-3.dll" &gt;nul
+if not exist "$(OutDir)Assets" mkdir "$(OutDir)Assets"
+xcopy "$(ProjectDir)Assets\*" "$(OutDir)Assets\" /E /I /Y /Q
+if not exist "$(OutDir)Data" mkdir "$(OutDir)Data"
+xcopy "$(ProjectDir)Data\*" "$(OutDir)Data\" /E /I /Y /Q
+copy /Y "$(ProjectDir)README.txt" "$(OutDir)README.txt" &gt;nul</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;Comdlg32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(ProjectDir)Runtime\x64\Release\sfml-graphics-3.dll" "$(OutDir)sfml-graphics-3.dll" &gt;nul
+copy /Y "$(ProjectDir)Runtime\x64\Release\sfml-window-3.dll" "$(OutDir)sfml-window-3.dll" &gt;nul
+copy /Y "$(ProjectDir)Runtime\x64\Release\sfml-system-3.dll" "$(OutDir)sfml-system-3.dll" &gt;nul
+copy /Y "$(ProjectDir)Runtime\x64\Release\sfml-audio-3.dll" "$(OutDir)sfml-audio-3.dll" &gt;nul
+if not exist "$(OutDir)Assets" mkdir "$(OutDir)Assets"
+xcopy "$(ProjectDir)Assets\*" "$(OutDir)Assets\" /E /I /Y /Q
+if not exist "$(OutDir)Data" mkdir "$(OutDir)Data"
+xcopy "$(ProjectDir)Data\*" "$(OutDir)Data\" /E /I /Y /Q
+copy /Y "$(ProjectDir)README.txt" "$(OutDir)README.txt" &gt;nul</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Characters\Character.cpp" />
+    <ClCompile Include="Source\Characters\Enemy.cpp" />
+    <ClCompile Include="Source\Characters\Player.cpp" />
+    <ClCompile Include="Source\Combat\PistolWeapon.cpp" />
+    <ClCompile Include="Source\Combat\Projectile.cpp" />
+    <ClCompile Include="Source\Core\AudioManager.cpp" />
+    <ClCompile Include="Source\Core\Game.cpp" />
+    <ClCompile Include="Source\Core\ResourceManager.cpp" />
+    <ClCompile Include="Source\Core\SaveManager.cpp" />
+    <ClCompile Include="Source\Core\SettingsManager.cpp" />
+    <ClCompile Include="Source\Core\VectorMath.cpp" />
+    <ClCompile Include="Source\Objects\Checkpoint.cpp" />
+    <ClCompile Include="Source\Objects\GameObject.cpp" />
+    <ClCompile Include="Source\Objects\HealthPickup.cpp" />
+    <ClCompile Include="Source\Objects\Wall.cpp" />
+    <ClCompile Include="Source\UI\DebugWindow.cpp" />
+    <ClCompile Include="Source\UI\Hud.cpp" />
+    <ClCompile Include="Source\World\CollisionManager.cpp" />
+    <ClCompile Include="Source\World\Level.cpp" />
+    <ClCompile Include="Source\World\LevelManager.cpp" />
+    <ClCompile Include="Source\World\VisualEffect.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Characters\Character.h" />
+    <ClInclude Include="Source\Characters\Enemy.h" />
+    <ClInclude Include="Source\Characters\Player.h" />
+    <ClInclude Include="Source\Combat\PistolWeapon.h" />
+    <ClInclude Include="Source\Combat\Projectile.h" />
+    <ClInclude Include="Source\Combat\ProjectileOwner.h" />
+    <ClInclude Include="Source\Core\AudioIds.h" />
+    <ClInclude Include="Source\Core\AudioManager.h" />
+    <ClInclude Include="Source\Core\Game.h" />
+    <ClInclude Include="Source\Core\GameState.h" />
+    <ClInclude Include="Source\Core\ResourceManager.h" />
+    <ClInclude Include="Source\Core\SaveGameData.h" />
+    <ClInclude Include="Source\Core\SaveManager.h" />
+    <ClInclude Include="Source\Core\SettingsManager.h" />
+    <ClInclude Include="Source\Core\SpriteIds.h" />
+    <ClInclude Include="Source\Core\VectorMath.h" />
+    <ClInclude Include="Source\Objects\Checkpoint.h" />
+    <ClInclude Include="Source\Objects\GameObject.h" />
+    <ClInclude Include="Source\Objects\HealthPickup.h" />
+    <ClInclude Include="Source\Objects\Wall.h" />
+    <ClInclude Include="Source\UI\DebugWindow.h" />
+    <ClInclude Include="Source\UI\Hud.h" />
+    <ClInclude Include="Source\World\CollisionManager.h" />
+    <ClInclude Include="Source\World\Level.h" />
+    <ClInclude Include="Source\World\LevelManager.h" />
+    <ClInclude Include="Source\World\VisualEffect.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Settings.ini" />
+    <None Include="Data\SaveData.txt" />
+    <None Include="Data\Levels\Level1.txt" />
+    <None Include="Data\Levels\Level2.txt" />
+    <None Include="Data\Levels\Level3.txt" />
+    <None Include="Data\Levels\Level4.txt" />
+    <None Include="Data\Levels\Level5.txt" />
+    <None Include="README.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
